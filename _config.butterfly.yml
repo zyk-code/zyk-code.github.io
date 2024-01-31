@@ -48,7 +48,7 @@ code_word_wrap: false
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/zyk-code || Github || '#24292e'
-  fas fa-envelope: qq:2667134364@qq.com || Email || '#4a7dbe'
+  # fas fa-envelope: qq:2667134364@qq.com || Email || '#4a7dbe'
 
 # Image (圖片設置)
 # --------------------------------------
@@ -68,7 +68,7 @@ disable_top_img: false
 index_img: /img/back.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img:
+default_top_img: /img/back.jpg
 
 # The banner image of archive page
 archive_img:
@@ -119,7 +119,7 @@ post_meta:
     date_type: created # created or updated or both 主頁文章日期是創建日或者更新日或都顯示
     date_format: date # date/relative 顯示日期還是相對日期
     categories: true # true or false 主頁是否顯示分類
-    tags: false # true or false 主頁是否顯示標籤
+    tags: true # true or false 主頁是否顯示標籤
     label: true # true or false 顯示描述性文字
   post:
     date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示
@@ -244,8 +244,8 @@ aside:
     button:
       enable: true
       icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/xxxxxx
+      text: github 主页
+      link: https://github.com/zyk-code
   card_announcement:
     enable: true
     content: This is my Blog
