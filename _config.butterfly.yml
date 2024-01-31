@@ -28,7 +28,7 @@ menu:
   #   相册: /photos/ || fa fa-camera-retro
   #   音乐: /music/ || fa fa-music
   #   影视: /movies/ || fas fa-video
-  友链: /links/ || fa fa-link
+  友链: /link/ || fa fa-link
   留言板: /comment/ || fa fa-paper-plane
   #留言板: /messageboard/ || fa fa-paper-plane
   关于笔者: /about/ || fas fa-heart  
