@@ -94,10 +94,6 @@ include:
 exclude:
 ignore:
 
-lazyload:
-  enable: true
-  loadingImg: /img/loading_1.gif
-
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
