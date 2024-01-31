@@ -5,7 +5,7 @@
 nav:
   logo: # image
   display_title: true
-  fixed: false # fixed navigation bar
+  fixed: true # fixed navigation bar
 
 # Menu 目錄
 menu:
@@ -48,7 +48,7 @@ code_word_wrap: false
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/zyk-code || Github || '#24292e'
-  # fas fa-envelope: qq:2667134364@qq.com || Email || '#4a7dbe'
+  # fas fa-envelope: qq: 2667134364@qq.com || Email || '#4a7dbe'
 
 # Image (圖片設置)
 # --------------------------------------
