@@ -950,7 +950,7 @@ CDN:
   # For example: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
   custom_format:
 
-  YAMLFlink:
+  link:
     headline: link
     info_headline: 我的Blog资料
     name: Blog 名字： 小康博客
