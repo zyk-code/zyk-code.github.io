@@ -1,0 +1,7 @@
+  class_name: 友情链接
+  link_list:
+    1:
+      name: 小康博客
+      link: https://www.antmoe.com
+      avatar: https://img.antmoe.com/avatar.png
+      descr: 每天进步一点点
