@@ -950,6 +950,15 @@ CDN:
   # For example: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
   custom_format:
 
+  YAMLFlink:
+    headline: link
+    info_headline: 我的Blog资料
+    name: Blog 名字： 小康博客
+    address: Blog 地址： https://www.antmoe.com/
+    avatar: Blog 头像： https://img.antmoe.com/avatar.jpg
+    info: Blog 简介： 一个收藏回忆与分享技术的地方！
+    comment: 如果需要交换友链,请留言
+
   option:
     # abcjs_basic_js:
     # activate_power_mode:
