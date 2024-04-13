@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as c,a5 as d}from"./chunks/framework.QlAJ4S92.js";const b=JSON.parse('{"title":"GDB","description":"","frontmatter":{},"headers":[],"relativePath":"note/c++/GDB.md","filePath":"note/c++/GDB.md"}'),a={name:"note/c++/GDB.md"},t=d("",22),r=[t];function i(n,p,l,s,h,_){return c(),o("div",null,r)}const m=e(a,[["render",i]]);export{b as __pageData,m as default};
