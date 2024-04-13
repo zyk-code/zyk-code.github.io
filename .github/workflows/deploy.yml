@@ -50,29 +50,11 @@ jobs:
         run: |
           npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
           touch .nojekyll
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .vitepress/dist
-      
-# 部署工作
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
 
   commit:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
+   needs: build
+   runs-on: ubuntu-latest
+   steps:
        # 在选择中，选择使用分支部署，不通过actions
        - name: Pulish to gh-pages
          uses: peaceiris/actions-gh-pages@v3
@@ -81,3 +63,24 @@ jobs:
           publish_dir: .vitepress/dist # 指定该文件夹中的 dist 
           publish_branch: gh-pages # 推送到关联仓库的 gh-pages 分支
           dotfiles: true  # 包括在提交中，即使被 .gitignore 文件忽略
+
+       # 上传文件
+       - name: Upload artifact
+         uses: actions/upload-pages-artifact@v3
+         with:
+          path: .vitepress/dist
+      
+# 部署工作
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: commit
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  
