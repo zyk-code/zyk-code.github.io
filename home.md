@@ -1,20 +1,5 @@
 ---
 layout: page
+title: 使用自定义组件的页面
 ---
-
-<script setup>
-import { VPTeamMembers } from 'vitepress/theme'
-
-const members = [
-  {
-    avatar: 'https://www.github.com/zyk-code.png',
-    name: 'zou yong ke',
-    title: 'Creator',
-    links: [
-      { icon: 'github', link: 'https://www.github.com/zyk-code' },
-    ]
-  },
-]
-</script>
-
-<VPTeamMembers size="small" :members="members" />
+ <TCardComponent />
