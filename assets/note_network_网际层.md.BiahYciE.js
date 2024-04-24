@@ -1,1 +1,0 @@
-import{_ as e,c as t,o}from"./chunks/framework.wEOluo3A.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"note/network/网际层.md","filePath":"note/network/网际层.md","lastUpdated":1713087399000}'),a={name:"note/network/网际层.md"};function n(r,s,c,_,d,p){return o(),t("div")}const f=e(a,[["render",n]]);export{m as __pageData,f as default};
