@@ -59,6 +59,7 @@ jobs:
           publish_dir: .vitepress/dist # 指定该文件夹中的 dist 
           publish_branch: gh-pages # 推送到关联仓库的 gh-pages 分支
           dotfiles: true  # 包括在提交中，即使被 .gitignore 文件忽略
+          
       # GRPK是本地PC的ssh私钥，配置在setting的action里面。
       # - name: Sync to Gitee
       #   uses: wearerequired/git-mirror-action@master

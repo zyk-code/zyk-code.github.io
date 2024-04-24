@@ -18,10 +18,15 @@ hero:
       link: https://gitee.com/zou-yongqiu
 
 features:
-  - title:  Esp8266 的小demo 📖
-    details: 这是一个简单的采集数据展示项目。可以在web端获取到axl345陀螺仪或者mpu6050的数据。你可以作为一个功能添加到你的物联网系统或者小程序上。
-    link: https://gitee.com/zou-yongqiu/esp8266
+  - title: 力扣 🤖
+    details: 力扣的个性域名站点。记得每天刷题。
+    link: https://leetcode.cn/u/a-e-ovo/
   - title: 本站代码仓库 🔜
     details: 基于vitepress的笔记静态站点。参考vitepress官方文档和AlbertZhang的文档网站
     link: https://github.com/zyk-code/zyk-code.github.io
+  - title:  Esp8266 的小demo 📖
+    details: 这是一个简单的采集数据展示项目。可以在web端获取到axl345陀螺仪或者mpu6050的数据。你可以作为一个功能添加到你的物联网系统或者小程序上。
+    link: https://gitee.com/zou-yongqiu/esp8266
 ---
+
+<!-- <MyComponent /> -->
