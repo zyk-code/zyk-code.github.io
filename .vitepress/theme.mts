@@ -34,6 +34,7 @@ const themeConfig: DefaultTheme.Config=  {
       { text: '首页', link: '/' },
       // param1: pathname, param2: name
       auto("c++", "C++"),
+      auto("软考"),
       auto("network", "计算机网络"),
       auto("Data Structure and Algorithms", "数据结构与算法"),
       auto("deep learning", "深度学习"),
