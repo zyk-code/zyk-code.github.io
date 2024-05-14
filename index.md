@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 个人简介
-      link: /home
+      link: /user
     - theme: alt
       text: go to gitee
       link: https://gitee.com/zou-yongqiu
