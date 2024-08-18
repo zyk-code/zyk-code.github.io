@@ -3,8 +3,8 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import MyComponent from '../../compoments/MyComponent.vue'
-import TCardComponent from '../../compoments/TCardComponent.vue'
+// import MyComponent from '../../compoments/MyComponent.vue'
+// import TCardComponent from '../../compoments/TCardComponent.vue'
 
 export default {
   extends: DefaultTheme,
@@ -13,9 +13,9 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
-  enhanceApp({ app, router, siteData }) {
-    // ...
-    app.component('MyComponent', MyComponent),
-    app.component('TCardComponent', TCardComponent)
-  }
+  // enhanceApp({ app, router, siteData }) {
+  //   // ...
+  //   app.component('MyComponent', MyComponent),
+  //   app.component('TCardComponent', TCardComponent)
+  // }
 } satisfies Theme
