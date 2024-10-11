@@ -218,10 +218,41 @@ linux通过kill发送sig给指定的pid
 
 1、信号大于1
 
-#### 多进程
+## 文件
+### 文件的种类
 
-#### 共享内存
+类型	说明
+-	普通文件。
+d	目录，字母d是dirtectory（目录）的缩写。
+l	符号链接。请注意，一个目录或者说一个文件夹是一个特殊文件，这个特殊文件存放的是其他文件和文件夹的相关信息。
+b	块设备文件。
+c	字符设备文件。
+p	管道文件
+s	套接口文件
 
-共享内存的不支持stl容器。
+### 文件权限
 
-### 线程操作
+1、文件权限：rwx 对应读/写/执行，通过000位表示，7=>111时表示rwx, 0=>000时表示---。
+2、每个文件都有三个权限：所有者、用户组、其他。
+3、通过`ls -l`或者`ll`命令查看文件权限。
+4、通过chmod命令修改权限。
+5、通过chown命令修改文件所有者。
+6、通过chgrp命令修改文件用户组。
+
+命令例子
+```
+# 设置文件权限为707：文件所有者和其他用户有读\写\执行权限，用户群组无权限
+chmod 707 testfile
+# 给文件file.txt的所有者（u）增加读取（+r）权限
+chmod u+r file.txt
+# 从文件file.txt的拥有者同组用户（g）中移除写入（-w）权限
+chmod g-w file.txt
+# 给目录directory的其他用户（o）增加执行（+x）权限
+chmod o+x directory
+# 给文件file.txt的所有用户（a）设置读取和写入权限
+chmod a=rw file.txt
+# 将file.txt文件所属用户修改为用户miniboy
+chown miniboy file.txt
+# 将file.txt文件的所属群组修改为newgroup
+chgrp newgroup file.txt
+```
