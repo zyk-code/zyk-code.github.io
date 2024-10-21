@@ -277,9 +277,7 @@ void func(Name& n){
 
 ```cpp
 #include <iostream>  
-#include <algorithm> // 用于std::swap  
-#include <cassert>   // 用于assert  
-  
+
 template<typename T>  
 class UniquePtr {  
 private:  
@@ -292,15 +290,8 @@ private:
 public:  
     // 默认构造函数  
     UniquePtr() : ptr(nullptr) {}  
-  
     // 构造函数，接受一个裸指针  
-    explicit UniquePtr(T* p) : ptr(p) {}  
-  
-    // 移动构造函数  
-    UniquePtr(UniquePtr<T>&& other) noexcept : ptr(other.ptr) {  
-        other.ptr = nullptr;  
-    }  
-  
+    explicit UniquePtr(T* p) : ptr(p) {} 
     // 移动赋值运算符  
     UniquePtr<T>& operator=(UniquePtr<T>&& other) noexcept {  
         if (this != &other) {  
@@ -310,46 +301,21 @@ public:
         }  
         return *this;  
     }  
-  
     // 析构函数  
     ~UniquePtr() {  
         delete ptr;  
     }  
-  
     // 访问裸指针  
     T* get() const {  
         return ptr;  
     }  
-  
     // 解引用  
     T& operator*() const {  
         assert(ptr != nullptr);  
         return *ptr;  
     }  
-  
-    // 成员访问  
-    T* operator->() const {  
-        assert(ptr != nullptr);  
-        return ptr;  
-    }  
-  
-    // 重置指针  
-    void reset(T* p = nullptr) {  
-        delete ptr;  
-        ptr = p;  
-    }  
-  
-    // 交换两个UniquePtr  
-    void swap(UniquePtr<T>& other) noexcept {  
-        std::swap(ptr, other.ptr);  
-    }  
-  
-    // 友元函数，允许直接交换两个UniquePtr对象  
-    friend void swap(UniquePtr<T>& lhs, UniquePtr<T>& rhs) noexcept {  
-        lhs.swap(rhs);  
-    }  
-};  
-  
+    ...
+} 
 // 使用示例  
 int main() {  
     UniquePtr<int> ptr1(new int(10));  
@@ -361,69 +327,6 @@ int main() {
     // std::cout << *ptr1 << std::endl; // 注释掉这行代码  
   
     return 0;  
-}
-```
-
-##### 常见智能指针
-
-###### 1. `std::unique_ptr`
-
-`std::unique_ptr`是C++11引入的一种智能指针，它拥有其所指向的对象。这意味着 `std::unique_ptr`的实例对其管理的资源拥有唯一所有权，不能复制（copy），但可以移动（move）。这使得它在需要唯一所有权语义的场景中非常有用。
-
-```cpp
-#include <memory>  
-  
-int main() {  
-    std::unique_ptr<int> ptr = std::make_unique<int>(10);  
-    // ptr.reset(); // 手动释放内存  
-    // std::unique_ptr<int> ptr2 = ptr; // 错误，不能复制  
-    std::unique_ptr<int> ptr2 = std::move(ptr); // 正确，通过移动语义  
-    // 此时ptr变为nullptr  
-}
-```
-
-###### 2. `std::shared_ptr`
-
-`std::shared_ptr`是另一种智能指针，它允许多个 `shared_ptr`实例共享对同一个对象的所有权。当最后一个拥有该对象的 `shared_ptr`被销毁或被重置时，该对象才会被删除。`std::shared_ptr`通过控制块（control block）来管理所有权，控制块中包含了一个指向对象的指针和一个计数器，该计数器记录了有多少个 `shared_ptr`实例指向该对象。
-
-```cpp
-#include <memory>  
-  
-int main() {  
-    std::shared_ptr<int> ptr1 = std::make_shared<int>(10);  
-    std::shared_ptr<int> ptr2 = ptr1; // 正确，ptr1和ptr2共享所有权  
-    // 当ptr1和ptr2超出作用域时，所指向的int对象将被自动删除  
-}
-```
-
-###### 3. `std::weak_ptr`
-
-`std::weak_ptr`是用来解决 `std::shared_ptr`之间可能产生的循环引用问题的一种智能指针。`std::weak_ptr`不拥有其所管理的对象，因此不会导致对象的生命周期延长。它更像是一个对 `std::shared_ptr`所管理对象的非拥有性引用。
-
-```cpp
-#include <memory>  
-  
-class A;  
-class B;  
-  
-class A {  
-public:  
-    std::shared_ptr<B> bPtr;  
-    // ...  
-};  
-  
-class B {  
-public:  
-    std::weak_ptr<A> aPtr; // 使用weak_ptr避免循环引用  
-    // ...  
-};  
-  
-int main() {  
-    std::shared_ptr<A> a = std::make_shared<A>();  
-    std::shared_ptr<B> b = std::make_shared<B>();  
-    a->bPtr = b;  
-    b->aPtr = a;  
-    // 没有循环引用问题，因为b->aPtr是weak_ptr  
 }
 ```
 

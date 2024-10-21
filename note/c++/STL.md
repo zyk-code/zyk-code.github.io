@@ -16,9 +16,13 @@ STL：容器、算法、迭代器、适配器、内存分配器（空间配置�
 
 ### queue
 
-### map
+### map与set
 
-find 和 count 都是查找，但是count返回的是个数，find会返回一个迭代器（当不存在key时，会返回map.end()）。
+`map`和`set`都是关联式容器，区别在于：map是键值对，set是键值，map的键值对可以重复，set的键值不能重复。
+
+`map`和`set`的底层实现是红黑树。`unordered_map`和`unordered_set`底层实现是哈希表。
+
+find 和 count 都是查找，但是count返回的是个数，find会返回一个迭代器（当不存在key时，会返回map.end()）。在set中没有find方法。
 
 ## 适配器
 
