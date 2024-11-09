@@ -9,6 +9,8 @@ git init  # 初始化本地仓库
 
 git add . # 添加所有文件到暂存区
 
+git status # 查看当前分支状态
+
 git commit -m "message" # 提交到本地仓库
 
 git remote add origin git@github.com:username/repo.git # 添加远程仓库可以是gitHub/gitee
