@@ -7,14 +7,23 @@ git 一个常见的版本管理器。
 ```shell
 git init  # 初始化本地仓库
 
-git add . # 添加所有文件到暂存区
+git fetch # 更新本地远程仓库
 
 git status # 查看当前分支状态
+
+git log # 查看当前HEAD分支，并且查看commit信息
+
+git branch -a # 查看所有分支
+git branch -vv # 查看当前分支的本地和对应的远程分支
+git branch # 查看当前分支
+
+git add . # 添加所有文件到暂存区
 
 git commit -m "message" # 提交到本地仓库
 
 git remote add origin git@github.com:username/repo.git # 添加远程仓库可以是gitHub/gitee
 
+git push --set-upstream origin remote_branch_name # 在远程仓库创建remote_branch_name分支
 git push -u origin master # 提交到远程仓库
 
 git pull # 拉取远程仓库
