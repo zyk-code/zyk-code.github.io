@@ -52,9 +52,9 @@ git reset --soft HEAD~1
 
 4. 提交到本地特性分支(git add . && git commit -m "message") === (git commit -a -m "message")
 
-5. 更新本地的main(git fetch origin main && git pull origin) === ( git pull --rebase origin main)  **fecth类似于更新缓存，但是并没有将最新的内容传递到本地。**
+5. 更新本地的main(git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
 
-6. 将跟新的本地main分支合并到feat分支(git rebase main)
+6. 将更新的本地main分支合并到feat分支(git rebase main) 
 
 7. 提交到远程特性分支(git push origin feat)
 
