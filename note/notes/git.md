@@ -4,32 +4,56 @@ git 一个常见的版本管理器。
 
 ## 常见操作
 
+### 分支查看和创建
 ```shell
-git init  # 初始化本地仓库
-
-git fetch # 更新本地远程仓库
-
-git status # 查看当前分支状态
+git status # 查看当前分支中暂存区、非暂存区的内容
 
 git log # 查看当前HEAD分支，并且查看commit信息
 
 git branch -a # 查看所有分支
+
 git branch -vv # 查看当前分支的本地和对应的远程分支
-git branch # 查看当前分支
+
+git branch branch_name # 查看当前分支/创建分支branch_name，但不会进入
+```
+
+### 提交到远程仓库
+```shell
+git push --set-upstream origin remote_branch_name # 在远程仓库创建remote_branch_name分支
+
+git push -u origin master # 提交到远程仓库
+
+git fetch # 更新本地远程仓库
 
 git add . # 添加所有文件到暂存区
 
-git commit -m "message" # 提交到本地仓库
-
-git remote add origin git@github.com:username/repo.git # 添加远程仓库可以是gitHub/gitee
-
-git push --set-upstream origin remote_branch_name # 在远程仓库创建remote_branch_name分支
-git push -u origin master # 提交到远程仓库
+git commit -m "message" # 创建commit
 
 git pull # 拉取远程仓库
 
 git clone git@github.com:username/repo.git # 克隆远程仓库
 ```
+
+### 回退
+
+硬回退和软回退。硬件回退是直接撤销所有的修改，软化回退是将所有的修改转入到非暂存区。
+```shell
+git reset --hard HEAD~1
+
+git reset --soft HEAD~1
+```
+
+### 一般的开发流程
+
+1. clone仓库
+
+2. 切换到本地仓库
+
+3. 创建分支
+
+4. 开发
+
+5. 
 
 ## github
 
