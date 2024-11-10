@@ -59,7 +59,7 @@ git reset --soft HEAD~1
 
 7. 将特性分支合并到主干分支(git rebase main main-dev) 或者切换到主分支(git rebase main-dev)
 
-8. 提交到远程仓库(git push)
+8. 提交到远程仓库(git push origin)
 
 ## github
 
