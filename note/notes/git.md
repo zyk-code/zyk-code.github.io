@@ -25,7 +25,7 @@ git push -u origin master # 提交到远程仓库
 
 git fetch # 更新本地远程仓库
 
-git add . # 添加所有文件到暂存区
+git add . # 添加所有修改的文件从非暂存区移入暂存区
 
 git commit -m "message" # 创建commit
 
@@ -47,13 +47,19 @@ git reset --soft HEAD~1
 
 1. clone仓库
 
-2. 切换到本地仓库
+2. 创建特性分支(git branch/ git checkout -b)/切换分支(git checkout )
 
-3. 创建分支
+3. 开发
 
-4. 开发
+4. 提交到本地特性分支(git add .)(git commit -m "message")
 
-5. 
+5. 测试
+
+6. 更新本地主干分支至最新并合并(git fetch)(git rebase origin/main) **fecth类似于刷新本地的缓存，需要同步到远程最新状态，然后在将当前的分支同步为远程的最新版本。**
+
+7. 将特性分支合并到主干分支(git rebase main main-dev) 或者切换到主分支(git rebase main-dev)
+
+8. 提交到远程仓库(git push)
 
 ## github
 
