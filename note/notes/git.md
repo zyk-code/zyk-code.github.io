@@ -3,6 +3,20 @@
 git 一个常见的版本管理器。
 
 ## 常见操作
+```shell
+git fetch # 更新本地远程仓库
+
+git remote # 远程操作
+
+git add  # 添加所有修改的文件从非暂存区移入暂存区
+
+git commit # 创建commit
+
+git clone  # 克隆远程仓库
+
+git pull  # 拉取远程仓库
+```
+
 
 ### 分支查看和创建
 ```shell
@@ -17,23 +31,6 @@ git branch -vv # 查看当前分支的本地和对应的远程分支
 git branch branch_name # 创建分支branch_name，但不会进入
 
 git push -u origin remote_branch_name # 在远程仓库创建或推送本地分支 -u可以替换--set-upstream（设置为上游分支）也可以不加参数
-```
-
-### 提交到远程仓库
-```shell
-
-git push -u origin master # 提交到远程仓库
-
-git fetch # 更新本地远程仓库
-
-git add . # 添加所有修改的文件从非暂存区移入暂存区
-
-git commit -m "message" # 创建commit
-git commit -a -m "message" # 合并了add操作
-
-git pull # 拉取远程仓库
-
-git clone git@github.com:username/repo.git # 克隆远程仓库
 ```
 
 ### 回退
@@ -53,17 +50,15 @@ git reset --soft HEAD~1
 
 3. 开发
 
-4. 提交到本地特性分支(git add .)(git commit -m "message")
+4. 提交到本地特性分支(git add . && git commit -m "message") === (git commit -a -m "message")
 
-5. 测试
+5. 更新本地的main(git fetch origin main && git pull origin) === ( git pull --rebase origin main)  **fecth类似于更新缓存，但是并没有将最新的内容传递到本地。**
 
-6. 更新本地的main(git fetch origin main) **fecth类似于刷新本地的缓存，需要同步到远程最新状态，然后在将当前的分支同步为远程的最新版本。**
+6. 将跟新的本地main分支合并到feat分支(git rebase main)
 
-7. 将跟新的本地main分支合并到feat分支(git rebase main)
+7. 提交到远程特性分支(git push origin feat)
 
-8. 提交到远程特性分支(git push origin feat)
-
-9. 在代码管理不同平台提交RP
+8. 在代码管理不同平台提交RP
 
 ## github
 
