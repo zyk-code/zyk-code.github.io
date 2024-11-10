@@ -28,6 +28,7 @@ git fetch # 更新本地远程仓库
 git add . # 添加所有修改的文件从非暂存区移入暂存区
 
 git commit -m "message" # 创建commit
+git commit -a -m "message" # 合并了add操作
 
 git pull # 拉取远程仓库
 
