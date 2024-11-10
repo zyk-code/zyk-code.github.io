@@ -14,12 +14,13 @@ git branch -a # 查看所有分支
 
 git branch -vv # 查看当前分支的本地和对应的远程分支
 
-git branch branch_name # 查看当前分支/创建分支branch_name，但不会进入
+git branch branch_name # 创建分支branch_name，但不会进入
+
+git push -u origin remote_branch_name # 在远程仓库创建或推送本地分支 -u可以替换--set-upstream（设置为上游分支）也可以不加参数
 ```
 
 ### 提交到远程仓库
 ```shell
-git push --set-upstream origin remote_branch_name # 在远程仓库创建remote_branch_name分支
 
 git push -u origin master # 提交到远程仓库
 
@@ -56,11 +57,13 @@ git reset --soft HEAD~1
 
 5. 测试
 
-6. 更新本地主干分支至最新并合并(git fetch)(git rebase origin/main) **fecth类似于刷新本地的缓存，需要同步到远程最新状态，然后在将当前的分支同步为远程的最新版本。**
+6. 更新本地的main(git fetch origin main) **fecth类似于刷新本地的缓存，需要同步到远程最新状态，然后在将当前的分支同步为远程的最新版本。**
 
-7. 将特性分支合并到主干分支(git rebase main main-dev) 或者切换到主分支(git rebase main-dev)
+7. 将跟新的本地main分支合并到feat分支(git rebase main)
 
-8. 提交到远程仓库(git push origin)
+8. 提交到远程特性分支(git push origin feat)
+
+9. 在代码管理不同平台提交RP
 
 ## github
 
