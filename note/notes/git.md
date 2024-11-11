@@ -33,6 +33,8 @@ git branch branch_name # 创建分支branch_name，但不会进入
 git push -u origin remote_branch_name # 在远程仓库创建或推送本地分支 -u可以替换--set-upstream（设置为上游分支）也可以不加参数
 
 git push origin --delete remote_branch_name # 删除远程分支
+
+git push origin --delete remote_branch_name # 删除远程分支
 ```
 
 ### 回退
@@ -56,9 +58,9 @@ git reset --soft HEAD~1
 
   1. 更新本地的main(git checkout main && git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成1-2的内容，但可能发生预期外的事情。作用是更新一下本地的main分支，避免出现远程main与本地main不一致的情况，例如其他人开发的功能合并进入远程main。
 
-  2. 将修改内容提交到本地feat分支(git add . && git commit -m "message") === (git commit -a -m "message")。
+  2. 将修改内容提交到本地feat分支(git checkout main && git add . && git commit -m "message") === (git commit -a -m "message")。
 
-  3. 将更新的本地main分支合并到本地feat分支(git checkout feat && git rebase main) 。
+  3. 将更新的本地main分支合并到本地feat分支(git checkout feat && git checkout feat && git rebase main) 。
 
   4. 提交到远程特性分支(git push origin feat)。
   
