@@ -52,15 +52,17 @@ git reset --soft HEAD~1
 
 3. 开发
 
-4. 提交到本地特性分支(git add . && git commit -m "message") === (git commit -a -m "message")
+4. 开发过程中提交commit的整体流程
 
-5. 更新本地的main(git checkout main && git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
+  1. 更新本地的main(git checkout main && git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成1-2的内容，但可能发生预期外的事情。
 
-6. 将更新的本地main分支合并到feat分支(git checkout feat && git rebase main) 
+  2. 提交到本地特性分支(git add . && git commit -m "message") === (git commit -a -m "message")
 
-7. 提交到远程特性分支(git push origin feat)
+  3. 将更新的本地main分支合并到feat分支(git checkout feat && git rebase main) 
 
-8. 在代码管理不同平台提交RP
+  4. 提交到远程特性分支(git push origin feat)
+  
+5. 完成整体功能的开发在代码管理不同平台提交PR，注意多次的commit都可以，但如果存在PR未审核容易产生冲突。
 
 ## github
 
