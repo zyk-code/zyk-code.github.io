@@ -33,6 +33,8 @@ git branch branch_name # 创建分支branch_name，但不会进入
 git push -u origin remote_branch_name # 在远程仓库创建或推送本地分支 -u可以替换--set-upstream（设置为上游分支）也可以不加参数
 
 git push origin --delete remote_branch_name # 删除远程分支
+
+git push origin --delete remote_branch_name # 删除远程分支
 ```
 
 ### 回退
@@ -60,6 +62,9 @@ git reset --soft HEAD~1
 
   3. 将更新的本地main分支合并到本地feat分支(git checkout feat && git rebase main) 。
 
+  4. 提交到远程特性分支(git push origin feat)。
+  
+5. 完成整体功能的开发在代码管理不同平台提交PR，注意多次的commit都可以，但如果存在PR未审核容易产生冲突。
   4. 提交到远程特性分支(git push origin feat)。
   
 5. 完成整体功能的开发在代码管理不同平台提交PR，注意多次的commit都可以，但如果存在PR未审核容易产生冲突。
