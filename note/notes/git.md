@@ -31,6 +31,8 @@ git branch -vv # 查看当前分支的本地和对应的远程分支
 git branch branch_name # 创建分支branch_name，但不会进入
 
 git push -u origin remote_branch_name # 在远程仓库创建或推送本地分支 -u可以替换--set-upstream（设置为上游分支）也可以不加参数
+
+git push origin --delete remote_branch_name # 删除远程分支
 ```
 
 ### 回退
@@ -52,9 +54,9 @@ git reset --soft HEAD~1
 
 4. 提交到本地特性分支(git add . && git commit -m "message") === (git commit -a -m "message")
 
-5. 更新本地的main(git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
+5. 更新本地的main(git checkout main && git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
 
-6. 将更新的本地main分支合并到feat分支(git rebase main) 
+6. 将更新的本地main分支合并到feat分支(git checkout feat && git rebase main) 
 
 7. 提交到远程特性分支(git push origin feat)
 
@@ -97,11 +99,3 @@ jobs:
           fetch-depth: 0
       - name: Setup Node
 ```
-
-## gitee
-
-国内版本的github
-
-### gitee page
-
-### 从github仓库同步gitee
