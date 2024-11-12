@@ -52,8 +52,7 @@ git reset --soft HEAD~1
 
 3. 开发,可以提交很多的commit特性分支(git add . && git commit -m "message") === (git commit -a -m "message") 推送到远程特性分支上(git push origin feat), **注意：在此不要轻易rebase到main上，否则会出现冲突**。
 
-4. 当功能开发完整，需要合并进远程主分支。需要先在更新本地的main(git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
-将更新的本地main分支合并到feat分支(git rebase main)，这里可能会有冲突需要解决，在提交到远程特性分支(git push origin feat)。这个commit表明了我需要将远程feat分支合并进入远程main分支，因此在这个commit之前需要同步一下远程main。
+4. 当功能开发完整，需要合并进远程主分支。需要先在更新本地的main(git fetch origin main && git pull origin main) 或者使用( git pull --rebase origin main)，将更新的本地main分支合并到feat分支(git rebase main)，这样会直接触发merge，很大可能出现冲突。因此直接(git fetch  && git rebase origin/main)。然后，提交到远程特性分支(git push origin feat)。这个commit表明需要将远程feat分支合并入远程main分支，因此在这个commit之前需要rebase远程main。
 
 5. 在代码管理不同平台提交RP
 
