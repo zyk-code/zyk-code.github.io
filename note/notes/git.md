@@ -48,11 +48,9 @@ git reset --soft HEAD~1
 
 2. 创建特性分支(git branch/ git checkout -b)/切换分支(git checkout )
 
-3. 开发
+3. 开发,可以提交很多的commit特性分支(git add . && git commit -m "message") === (git commit -a -m "message") 推送到远程特性分支上(git push origin feat)。
 
-4. 提交到本地特性分支(git add . && git commit -m "message") === (git commit -a -m "message")
-
-5. 更新本地的main(git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
+4. 当功能开发完整，需要合并进入远程主分支时，更新本地的main(git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
 
 6. 将更新的本地main分支合并到feat分支(git rebase main) 
 
@@ -97,11 +95,3 @@ jobs:
           fetch-depth: 0
       - name: Setup Node
 ```
-
-## gitee
-
-国内版本的github
-
-### gitee page
-
-### 从github仓库同步gitee
