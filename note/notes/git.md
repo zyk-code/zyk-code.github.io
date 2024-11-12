@@ -50,17 +50,12 @@ git reset --soft HEAD~1
 
 2. 创建特性分支(git branch/ git checkout -b)/切换分支(git checkout )
 
-3. 开发
+3. 开发,可以提交很多的commit特性分支(git add . && git commit -m "message") === (git commit -a -m "message") 推送到远程特性分支上(git push origin feat), **注意：在此不要轻易rebase到main上，否则会出现冲突**。
 
-4. 提交到本地特性分支(git add . && git commit -m "message") === (git commit -a -m "message")
+4. 当功能开发完整，需要合并进远程主分支。需要先在更新本地的main(git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
+将更新的本地main分支合并到feat分支(git rebase main)，这里可能会有冲突需要解决，在提交到远程特性分支(git push origin feat)。这个commit表明了我需要将远程feat分支合并进入远程main分支，因此在这个commit之前需要同步一下远程main。
 
-5. 更新本地的main(git checkout main && git fetch origin main && git pull origin) 或者使用( git pull --rebase origin main)直接完成第6步的内容。
-
-6. 将更新的本地main分支合并到feat分支(git checkout feat && git rebase main) 
-
-7. 提交到远程特性分支(git push origin feat)
-
-8. 在代码管理不同平台提交RP
+5. 在代码管理不同平台提交RP
 
 ## github
 
