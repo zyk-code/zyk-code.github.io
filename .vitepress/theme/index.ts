@@ -12,7 +12,7 @@ export default {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       // slots的方式，在默认主题上更改。
-      // "home-features-after": () => h(MyComponent)
+      "home-features-after": () => h(MyComponent)
     })
   },
 } satisfies Theme
