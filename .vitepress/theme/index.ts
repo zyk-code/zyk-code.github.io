@@ -2,20 +2,17 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import MyComponent from './layoutSlots/MyLayout.vue';
+
 import './style.css'
-// import MyComponent from '../../compoments/MyComponent.vue'
-// import TCardComponent from '../../compoments/TCardComponent.vue'
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
+      // slots的方式，在默认主题上更改。
+      // "home-features-after": () => h(MyComponent)
     })
   },
-  // enhanceApp({ app, router, siteData }) {
-  //   // ...
-  //   app.component('MyComponent', MyComponent),
-  //   app.component('TCardComponent', TCardComponent)
-  // }
 } satisfies Theme
