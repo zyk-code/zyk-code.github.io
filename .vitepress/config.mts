@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import themeConfig from './theme.mjs'
+import { fileURLToPath } from 'url' 
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,7 +13,6 @@ export default defineConfig({
   // head标签配置
   head: [
     ["link", { rel: "icon", href: "/assets/logo.svg" }],
-    // ["link",{ rel: "stylesheet", href: 'https://fonts.font.im/css?family=Oxygen', crossorigin: '' }],
   ],
 
   themeConfig,
@@ -25,18 +25,40 @@ export default defineConfig({
       // 默认禁用图片懒加载
       lazyLoading: true
     },
-    // options for markdown-it-anchor
-    // https://github.com/valeriangalliat/markdown-it-anchor#usage
-    // anchor: {
-    //   permalink: markdownItAnchor.permalink.headerLink(),
-    // },
-
-    // // options for @mdit-vue/plugin-toc
-    // // https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc#options
-    // toc: { level: [2, 3] },
-    // config: (md) => {
-    //   // use more markdown-it plugins!
-    //   md.use(tocPlugin);
-    // },
   },
+
+  vite: {
+    resolve: {
+      // 重写组件
+      alias: [
+        // 导航栏
+        // {
+        //   find: /^.*\/VPNavBar\.vue$/,
+        //   replacement: fileURLToPath(
+        //     new URL('./components/Reset/index.vue', import.meta.url)
+        //   )
+        // },
+        // hero
+        // {
+        //   find: /^.*\/VPHero\.vue$/,
+        //   replacement: fileURLToPath(
+        //     new URL("./components/Reset/index.vue", import.meta.url)
+        //   ),
+        // },
+        // feature
+        // {
+        //   find: /^.*\/VPFeature\.vue$/,
+        //   replacement: fileURLToPath(
+        //     new URL("./components/Reset/index.vue", import.meta.url)
+        //   ),
+        // },
+        // {
+        //   find: /^.*\/VPSidebarItem\.vue$/,
+        //   replacement: fileURLToPath(
+        //     new URL("./components/Reset/index.vue", import.meta.url)
+        //   ),
+        // },
+      ]
+    }
+  }
 })

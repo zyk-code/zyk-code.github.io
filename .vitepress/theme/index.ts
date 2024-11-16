@@ -2,7 +2,7 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import MyComponent from '../layoutSlots/MyLayout.vue';
+import MyComponent from '../components/MyLayout.vue';
 
 import './style.css'
 
