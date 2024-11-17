@@ -62,15 +62,25 @@ const Test: SidebarItem = {
   items: [
     { text: '第一章', link: '/第一章' },
     { text: '第二章', link: '/第二章' },
-    { text: '第二章', link: '/第二章' },
+    { text: '第三章', link: '/第三章' },
   ],
 }
+
+const Data: SidebarItem = {
+  text: "数据结构",
+  base: "/计算机/数据结构/",
+  items: [
+    { text: '树', link: '/树' },
+    { text: '哈希', link: '/哈希' },
+    { text: '排序', link:'/排序' },
+  ]
+ }
 
 const Computer: SidebarItem[] = [
   ConputerNetWork,
   ConputerOS,
+  Data,
   Test,
-  
 ]
 
 const Other: SidebarItem[] = [
