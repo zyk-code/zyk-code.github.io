@@ -1,45 +1,31 @@
-import { auto } from './ulits/auto.mjs'
+
 import { DefaultTheme } from 'vitepress'
+import nav from './nav.mts'
+import sidebar from './sidebar.mts'
 
 const themeConfig: DefaultTheme.Config=  {
 
     // 上下页
-    docFooter: {
-      prev: 'Pagina prior',
-      next: 'Proxima pagina'
-    },
+    // docFooter: {
+    //   prev: 'Pagina prior',
+    //   next: 'Proxima pagina'
+    // },
     
     lastUpdatedText: "文章更新时间",
 
     outlineTitle: "文章目录",
     outline: [2, 6],
 
-    // sidebar: [
-    //   {
-    //     text: '实例',
-    //     items: [
-    //       { text: 'Markdown Examples', link: '/test/markdown-examples' },
-    //       { text: 'Runtime API Examples', link: '/test/api-examples' }
-    //     ]
-    //   }
-    // ],
-    // 不配置等同于 sidebar: false,
-
-    aside: "left",
+    
+    sidebar,
+    // // 不配置等同于 sidebar: false,
+    // 默认在右边
+    // aside: "left",
     
     logo: "/assets/logo.svg",
 
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: '首页', link: '/' },
-      // param1: pathname, param2: name
-      auto("c++", "C++"),
-      auto("软考"),
-      auto("network", "计算机网络"),
-      auto("Data Structure and Algorithms", "数据结构与算法"),
-      auto("deep learning", "深度学习"),
-      auto("notes", "杂记"),
-    ],
+    nav,
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/zyk-code' }
@@ -49,6 +35,7 @@ const themeConfig: DefaultTheme.Config=  {
       message: 'Released under the <a href="#">MIT License</a>.',
       copyright: 'Copyright © 2024-present <a href="https://www.github.com/zyk-code">zyk</a>'
     },
+
     // 设置搜索框的样式
     search: {
       provider: "local",
