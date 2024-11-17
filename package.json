@@ -9,6 +9,10 @@
     "docs:preview": "vitepress preview"
   },
   "peerDependencies": {
-    "vue":  "^3.0.0"
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   }
 }

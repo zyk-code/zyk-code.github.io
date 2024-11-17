@@ -74,5 +74,5 @@ export const auto = (pathname, text="") => {
   return {text, items};
 };
 
-// const r = auto("classe");
+// const r = auto("../../note/c++");
 // console.log(r);

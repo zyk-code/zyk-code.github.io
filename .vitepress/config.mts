@@ -1,13 +1,11 @@
 import { defineConfig } from 'vitepress'
-import themeConfig from './theme.mjs'
-import { fileURLToPath } from 'url' 
+import themeConfig from './config/theme.mjs'
+// import { fileURLToPath } from 'url' 
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "zyk",
   description: "文档站点",
-  // base: "/",
-
   lastUpdated: true,
   
   // head标签配置
@@ -26,7 +24,7 @@ export default defineConfig({
       lazyLoading: true
     },
   },
-
+  // srcDir: "./src",
   vite: {
     resolve: {
       // 重写组件
