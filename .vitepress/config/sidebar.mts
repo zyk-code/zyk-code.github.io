@@ -1,6 +1,28 @@
 import { DefaultTheme } from 'vitepress'
 import { auto } from '../ulits/auto.mjs'
 import { SidebarMulti, SidebarItem } from 'vitepress/types/default-theme'
+import fs from 'fs';
+import path from 'path';
+
+function generateSidebar(dir: string): Record<string, string[]> {
+  const sidebar: Record<string, string[]> = {};
+
+  const files = fs.readdirSync(dir);
+
+  files.forEach(file => {
+    const fullPath = path.join(dir, file);
+    const stats = fs.statSync(fullPath);
+
+    if (stats.isDirectory()) {
+      const subFiles = fs.readdirSync(fullPath).filter(f => f.endsWith('.md'));
+      if (subFiles.length > 0) {
+        sidebar[file] = subFiles.map(f => path.join(file, f));
+      }
+    }
+  });
+
+  return sidebar;
+}
 
 const CpulsItems: SidebarItem[] = [
   { text: '语法基础', link: './' },
@@ -89,6 +111,7 @@ const Other: SidebarItem[] = [
   { text: 'Docker', link: './Docker' },
 ]
 
+// 主的配置项
 const sidebar: SidebarMulti = {
   '/C++': {
     collapsed: false,

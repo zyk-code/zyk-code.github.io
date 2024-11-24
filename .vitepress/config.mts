@@ -1,9 +1,11 @@
-import { defineConfig } from 'vitepress'
+// import { defineConfig } from 'vitepress'
 import themeConfig from './config/theme.mjs'
 // import { fileURLToPath } from 'url' 
+import { withMermaid } from "vitepress-plugin-mermaid"
+import mathjax3 from 'markdown-it-mathjax3'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
   title: "zyk",
   description: "文档站点",
   lastUpdated: true,
@@ -23,6 +25,17 @@ export default defineConfig({
       // 默认禁用图片懒加载
       lazyLoading: true
     },
+    config: (md) => {
+      md.use(mathjax3);
+    },
+  },
+
+  mermaid: {
+    // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
+  },
+  // optionally set additional config for plugin itself with MermaidPluginConfig
+  mermaidPlugin: {
+    class: "mermaid my-class", // set additional css classes for parent container 
   },
   // srcDir: "./src",
   vite: {
