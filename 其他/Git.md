@@ -31,6 +31,10 @@ git branch -vv # 查看当前分支的本地和对应的远程分支
 git branch branch_name # 创建分支branch_name，但不会进入
 
 git push -u origin remote_branch_name # 在远程仓库创建或推送本地分支 -u可以替换--set-upstream（设置为上游分支）也可以不加参数
+```
+### 分支删除
+``` shell
+git branch -d branch_name # 删除本地分支，但需要切换出去。
 
 git push origin --delete remote_branch_name # 删除远程分支
 ```
