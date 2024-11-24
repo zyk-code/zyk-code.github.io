@@ -1,7 +1,9 @@
 {
   "devDependencies": {
     "markdown-it-mathjax3": "^4.3.2",
-    "vitepress": "^1.1.0"
+    "mermaid": "^11.4.0",
+    "vitepress": "^1.1.0",
+    "vitepress-plugin-mermaid": "^2.0.17"
   },
   "scripts": {
     "docs:dev": "vitepress dev",
@@ -13,6 +15,7 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "markdown-it-katex": "^2.0.3",
     "path": "^0.12.7"
   }
 }
