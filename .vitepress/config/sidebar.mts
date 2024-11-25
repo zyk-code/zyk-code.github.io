@@ -1,43 +1,30 @@
 import { DefaultTheme } from 'vitepress'
 import { auto } from '../ulits/auto.mjs'
 import { SidebarMulti, SidebarItem } from 'vitepress/types/default-theme'
-import fs from 'fs';
-import path from 'path';
-
-function generateSidebar(dir: string): Record<string, string[]> {
-  const sidebar: Record<string, string[]> = {};
-
-  const files = fs.readdirSync(dir);
-
-  files.forEach(file => {
-    const fullPath = path.join(dir, file);
-    const stats = fs.statSync(fullPath);
-
-    if (stats.isDirectory()) {
-      const subFiles = fs.readdirSync(fullPath).filter(f => f.endsWith('.md'));
-      if (subFiles.length > 0) {
-        sidebar[file] = subFiles.map(f => path.join(file, f));
-      }
-    }
-  });
-
-  return sidebar;
-}
 
 const CpulsItems: SidebarItem[] = [
-  { text: '语法基础', link: './' },
-  { text: '面向对象', link: './面向对象' },
-  { text: 'C++11新特性', link: './C++11新特性' },
-  { text: 'STL', link: './STL' },
-  { text: '并发编程', link: './并发编程' },
-  { text: '设计模式', link: './设计模式' },
-  { text: '动态库与静态库', link: './动态库与静态库' },
-  { text: 'make和CMake', link: './make'},
-  { text: 'GDB调试', link: './GDB' }
+  { text:"语言",
+    base: '/C++/语言',
+    items: [
+      { text: '基础语法', link: '/基础语法' },
+      { text: '面向对象', link: '/面向对象' },
+      { text: 'C++11新特性', link: '/C++11新特性' },
+      { text: 'STL', link: '/STL' },
+      { text: '并发编程', link: '/并发编程' },
+    ]
+  },
+  { text:"工具",
+    base: '/C++/工具',
+    items: [
+      { text: '动态库与静态库', link: '/动态库与静态库' },
+      { text: 'make和CMake', link: '/make'},
+      { text: 'GDB调试', link: '/GDB' }
+    ]
+  },
 ]
 
 const DeelLearing: SidebarItem[] = [
-  { text: '基础', link: './' },
+  { text: '基础', link: './基础' },
   { text: '分类网络', link: './分类网络' },
   { text: 'RCNN系列', link: './RCNN系列' },
   { text: '视觉Transformer', link: './VIT' },
@@ -73,7 +60,7 @@ const ConputerOS: SidebarItem = {
   items: [
     {
       text: "操作系统",
-      link: "./操作系统"
+      link: "/操作系统/操作系统"
     } 
   ],
 }
@@ -106,23 +93,30 @@ const Computer: SidebarItem[] = [
 ]
 
 const Other: SidebarItem[] = [
-  { text: 'Git', link: './Git' },
-  { text: 'Linux', link: './Linux' },
-  { text: 'Docker', link: './Docker' },
+  { text: 'Git', link: '/Git' },
+  { text: 'Linux', link: '/Linux' },
+  { text: 'Docker', link: '/Docker' },
 ]
 
 // 主的配置项
 const sidebar: SidebarMulti = {
   '/C++': {
     collapsed: false,
+    base: "/C++/",
     items: CpulsItems,
   },
-  "/深度学习": DeelLearing,
+  "/深度学习": {
+    base: "/深度学习/",
+    items: DeelLearing,
+  },
   "/计算机": {
     base: "/计算机/",
     items:Computer,
   },
-  "/其他": Other,
+  "/其他": {
+    base: "/其他/",
+    items: Other,
+  },
 };
 
 export default sidebar

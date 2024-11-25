@@ -15,6 +15,8 @@ export default withMermaid({
     ["link", { rel: "icon", href: "/assets/logo.svg" }],
   ],
 
+  cleanUrls: true,
+
   themeConfig,
 
   // 插件
