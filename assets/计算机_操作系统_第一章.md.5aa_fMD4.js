@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.A_45CHVO.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"计算机/操作系统/第一章.md","filePath":"计算机/操作系统/第一章.md","lastUpdated":1732505001000}'),r={name:"计算机/操作系统/第一章.md"};function o(s,c,n,_,d,p){return a(),t("div")}const f=e(r,[["render",o]]);export{m as __pageData,f as default};
