@@ -2,37 +2,62 @@ import { DefaultTheme } from 'vitepress'
 import { auto } from '../ulits/auto.mjs'
 import { SidebarMulti, SidebarItem } from 'vitepress/types/default-theme'
 
-const CpulsItems: SidebarItem[] = [
-  { text:"语言",
-    base: '/C++/语言',
-    items: [
-      { text: '基础语法', link: '/基础语法' },
-      { text: '面向对象', link: '/面向对象' },
-      { text: 'C++11新特性', link: '/C++11新特性' },
-      { text: 'STL', link: '/STL' },
-      { text: '并发编程', link: '/并发编程' },
-    ]
-  },
-  { text:"工具",
-    base: '/C++/工具',
-    items: [
-      { text: '动态库与静态库', link: '/动态库与静态库' },
-      { text: 'make和CMake', link: '/make'},
-      { text: 'GDB调试', link: '/GDB' }
-    ]
-  },
-]
+/*
+  * 侧边栏配置
+  * 1、文件嵌套不超过两层。
+  * 2、两层的目录使用嵌套对象封装，单一文件夹封装
+*/
+const Grammar: SidebarItem = {
+   text: "语法",
+  base: "/C++/语法",
+  items: [
+    {
+      text: "基础",
+      link: "/basic"
+    },
+    {
+      text: "面向对象",
+      link: "/oop"
+    },
+    {
+      text: "STL",
+      link: "/STL"
+    },
+    {
+      text: "C++11",
+      link: "/C++11"
+    },
+    {
+      text: "并发编程",
+      link: "/并发编程"
+    },
+  ],
+}
+const Tool: SidebarItem = {
+  text: "工具",
+  base: "/C++/工具",
+  items: [
+    {
+      text: "GDB",
+      link: "/GDB"
+    },
+    {
+      text: "Make",
+      link: "/make"
+    } ,
+    {
+      text: "动态库和静态库",
+      link: "/lb"
+    } 
+  ],
+}
 
-const DeelLearing: SidebarItem[] = [
-  { text: '基础', link: './基础' },
-  { text: '分类网络', link: './分类网络' },
-  { text: 'RCNN系列', link: './RCNN系列' },
-  { text: '视觉Transformer', link: './VIT' },
-  { text: 'DINO的训练日志', link: './DINO的训练日志' },
-  { text: 'mmdetection', link: './mmdetection' },
+// C++
+const Cplusplus: SidebarItem[] = [
+  Tool,
+  Grammar,
 ]
   
-
 const ConputerNetWork: SidebarItem = {
   text: "计算机网络",
   base: "/计算机/计算机网络",
@@ -79,12 +104,14 @@ const Data: SidebarItem = {
   text: "数据结构",
   base: "/计算机/数据结构/",
   items: [
+    { text: '链表', link:'/链表' },
     { text: '树', link: '/树' },
+    // { text: '图', link: '/图' },
     { text: '哈希', link: '/哈希' },
-    { text: '排序', link:'/排序' },
   ]
  }
 
+ // 计算机
 const Computer: SidebarItem[] = [
   ConputerNetWork,
   ConputerOS,
@@ -92,18 +119,33 @@ const Computer: SidebarItem[] = [
   Test,
 ]
 
+// 深度学习
+const DeelLearing: SidebarItem[] = [
+  { text: '基础', link: './基础' },
+  { text: '分类网络', link: './分类网络' },
+  { text: 'RCNN系列', link: './RCNN系列' },
+  { text: '视觉Transformer', link: './VIT' },
+  { text: 'DINO的训练日志', link: './DINO的训练日志' },
+  { text: 'mmdetection', link: './mmdetection' },
+]
+
+
+// 项目
+const Project: SidebarItem[] = [
+  
+]
+
+// 其他
 const Other: SidebarItem[] = [
   { text: 'Git', link: '/Git' },
   { text: 'Linux', link: '/Linux' },
   { text: 'Docker', link: '/Docker' },
 ]
-
 // 主的配置项
 const sidebar: SidebarMulti = {
   '/C++': {
-    collapsed: false,
     base: "/C++/",
-    items: CpulsItems,
+    items: Cplusplus,
   },
   "/深度学习": {
     base: "/深度学习/",
