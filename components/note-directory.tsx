@@ -1,7 +1,12 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Search, ArrowUpRight } from 'lucide-react';
+import { Search, ArrowUpRight, ChevronDown } from 'lucide-react';
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '@/components/ui/collapsible';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Empty, EmptyDescription } from '@/components/ui/empty';
@@ -11,6 +16,30 @@ import topics from '@/data/topics.json';
 
 export default function NoteDirectory() {
   const [query, setQuery] = useState('');
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  function updateQuery(value: string) {
+    setQuery(value);
+    setExpanded({});
+  }
+  useEffect(() => {
+    function reveal(id: string) {
+      if (topics.some((topic) => topic.id === id))
+        setExpanded((previous) => ({ ...previous, [id]: true }));
+    }
+    const onHashChange = () => reveal(window.location.hash.slice(1));
+    const onCategoryClick = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+      const href = event.target.closest('a')?.getAttribute('href');
+      if (href?.startsWith('#')) reveal(href.slice(1));
+    };
+    onHashChange();
+    window.addEventListener('hashchange', onHashChange);
+    document.addEventListener('click', onCategoryClick);
+    return () => {
+      window.removeEventListener('hashchange', onHashChange);
+      document.removeEventListener('click', onCategoryClick);
+    };
+  }, []);
   const searching = query.trim().length > 0;
   const matches = notes.filter((note) =>
     matchesQuery(
@@ -34,16 +63,20 @@ export default function NoteDirectory() {
             id="note-search-input"
             type="search"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => updateQuery(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === 'Escape') setQuery('');
+              if (event.key === 'Escape') updateQuery('');
             }}
             placeholder="搜索标题、正文或代码…"
             aria-describedby="note-search-status"
             autoComplete="off"
           />
           {query && (
-            <Button type="button" variant="ghost" onClick={() => setQuery('')}>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => updateQuery('')}
+            >
               清空
             </Button>
           )}
@@ -58,60 +91,77 @@ export default function NoteDirectory() {
         const group = matches.filter((note) => note.category === topic.id);
         const total = notes.filter((note) => note.category === topic.id).length;
         return (
-          <section id={topic.id} className="directory-category" key={topic.id}>
-            <div className="directory-label">
-              <span className="directory-number">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h2>{topic.title}</h2>
-              <p>{topic.tags}</p>
-              <span className="directory-count">
-                {searching ? `${group.length} / ${total}` : total} 篇笔记
-              </span>
-            </div>
-            {group.length ? (
-              <div className="note-list">
-                {group.map((article) => (
-                  <a
-                    className="note-link"
-                    href={'/notes/' + article.slug}
-                    key={article.slug}
-                  >
-                    <div>
-                      <span className="note-subcategory">
-                        {article.file.split('/').length > 2
-                          ? article.file.split('/')[1]
-                          : topic.title}
+          <Collapsible
+            id={topic.id}
+            className="directory-category directory-fold"
+            key={topic.id}
+            open={expanded[topic.id] ?? (searching && group.length > 0)}
+            onOpenChange={(open) =>
+              setExpanded((previous) => ({ ...previous, [topic.id]: open }))
+            }
+          >
+            <h2 className="directory-fold-heading">
+              <CollapsibleTrigger className="directory-toggle">
+                <span className="directory-number">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="directory-title">{topic.title}</span>
+                <span className="directory-tags">{topic.tags}</span>
+                <span className="directory-count">
+                  {searching ? `${group.length} / ${total}` : total} 篇笔记
+                </span>
+                <ChevronDown
+                  className="directory-chevron"
+                  size={20}
+                  aria-hidden="true"
+                />
+              </CollapsibleTrigger>
+            </h2>
+            <CollapsibleContent keepMounted className="directory-fold-content">
+              {group.length ? (
+                <div className="note-list">
+                  {group.map((article) => (
+                    <a
+                      className="note-link"
+                      href={'/notes/' + article.slug}
+                      key={article.slug}
+                    >
+                      <div>
+                        <span className="note-subcategory">
+                          {article.file.split('/').length > 2
+                            ? article.file.split('/')[1]
+                            : topic.title}
+                        </span>
+                        <h3>
+                          {article.title}
+                          <ArrowUpRight size={15} />
+                        </h3>
+                        <p>
+                          {searching
+                            ? searchExcerpt(article.searchText, query) ||
+                              article.summary
+                            : article.summary}
+                        </p>
+                      </div>
+                      <span className="note-time">
+                        {article.isOutline
+                          ? '学习提纲'
+                          : `约 ${article.minutes} 分钟`}
                       </span>
-                      <h3>
-                        {article.title}
-                        <ArrowUpRight size={15} />
-                      </h3>
-                      <p>
-                        {searching
-                          ? searchExcerpt(article.searchText, query) ||
-                            article.summary
-                          : article.summary}
-                      </p>
-                    </div>
-                    <span className="note-time">
-                      {article.isOutline
-                        ? '学习提纲'
-                        : `约 ${article.minutes} 分钟`}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            ) : (
-              <Empty className="category-empty">
-                <EmptyDescription>
-                  {searching
-                    ? '这个分类暂无匹配结果，可以减少关键词再试。'
-                    : '这个分类还没有笔记。'}
-                </EmptyDescription>
-              </Empty>
-            )}
-          </section>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <Empty className="category-empty">
+                  <EmptyDescription>
+                    {searching
+                      ? '这个分类暂无匹配结果，可以减少关键词再试。'
+                      : '这个分类还没有笔记。'}
+                  </EmptyDescription>
+                </Empty>
+              )}
+            </CollapsibleContent>
+          </Collapsible>
         );
       })}
     </section>

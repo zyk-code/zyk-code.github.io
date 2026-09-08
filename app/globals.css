@@ -1450,3 +1450,79 @@ h2 > span {
     font-size: 29px;
   }
 }
+.directory-category.directory-fold {
+  display: block;
+  padding-block: 0;
+}
+.directory-fold-heading {
+  margin: 0;
+  font-size: inherit;
+}
+.directory-toggle {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  padding: 26px 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+.directory-title {
+  font-size: 24px;
+  font-weight: 700;
+  min-width: 160px;
+}
+.directory-tags {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  color: #6b7764;
+}
+.directory-toggle .directory-count {
+  margin: 0 0 0 auto;
+  white-space: nowrap;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+.directory-chevron {
+  color: #66834d;
+  transition: transform 0.2s;
+}
+.directory-toggle[aria-expanded='true'] .directory-chevron {
+  transform: rotate(180deg);
+}
+.directory-fold-content {
+  padding: 0 0 30px 55px;
+}
+.directory-fold-content[hidden] {
+  display: none;
+}
+.directory-fold-content .note-list {
+  gap: 0 36px;
+}
+@media (max-width: 680px) {
+  .directory-toggle {
+    gap: 12px;
+    padding-block: 22px;
+    flex-wrap: wrap;
+  }
+  .directory-title {
+    font-size: 21px;
+    min-width: 0;
+  }
+  .directory-tags {
+    display: none;
+  }
+  .directory-fold-content {
+    padding-left: 0;
+  }
+  .directory-toggle .directory-count {
+    font-size: 12px;
+  }
+  .directory-chevron {
+    width: 18px;
+  }
+}
