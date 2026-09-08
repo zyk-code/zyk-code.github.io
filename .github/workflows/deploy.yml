@@ -25,6 +25,8 @@ jobs:
       - uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Check code and content regressions
+        run: pnpm check
       - name: Build and validate static site
         run: pnpm build
       - uses: actions/upload-pages-artifact@v3

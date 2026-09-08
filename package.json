@@ -6,11 +6,12 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
+    "dev": "node scripts/build-content.mjs && vinext dev",
     "build": "node scripts/build-content.mjs && vinext build && node scripts/finish-export.mjs",
     "start": "vinext start",
-    "lint": "oxlint",
-    "format": "oxfmt"
+    "lint": "oxlint app components/site-header.tsx components/mobile-contents.tsx components/note-directory.tsx lib/note-search.mjs scripts vite.config.ts",
+    "format": "oxfmt",
+    "check": "pnpm lint && tsc --noEmit && node scripts/check-content.mjs && node scripts/check-search.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

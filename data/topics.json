@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cpp",
+    "title": "C++",
+    "en": "LANGUAGE & ENGINEERING",
+    "description": "从语言基础到并发编程，理解代码背后的机制。",
+    "tags": "语言 · STL · 工程工具"
+  },
+  {
+    "id": "computer",
+    "title": "计算机基础",
+    "en": "COMPUTER SCIENCE",
+    "description": "数据结构、操作系统与网络，把知识连成体系。",
+    "tags": "系统 · 网络 · 数据结构"
+  },
+  {
+    "id": "ai",
+    "title": "深度学习",
+    "en": "DEEP LEARNING",
+    "description": "从神经网络的基础原理，到目标检测的训练实践。",
+    "tags": "视觉 · 模型 · 训练记录"
+  },
+  {
+    "id": "tools",
+    "title": "开发工具",
+    "en": "DEVELOPER TOOLKIT",
+    "description": "记录 Linux、Git 和 Docker 的常用操作与踩坑经验。",
+    "tags": "Linux · Git · Docker"
+  }
+]
