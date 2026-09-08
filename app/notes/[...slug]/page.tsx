@@ -36,9 +36,9 @@ export default async function ArticlePage({ params }: Props) {
       <main id="main-content" tabIndex={-1} className="container reader-grid">
         <article className="reader-article">
           <nav aria-label="面包屑" className="breadcrumb">
-            <a href="/#knowledge">知识库</a>
+            <a href="/library">知识库</a>
             <span>/</span>
-            <a href={'/#' + article.category}>{article.categoryLabel}</a>
+            <a href={'/library#' + article.category}>{article.categoryLabel}</a>
           </nav>
           <header className="article-heading">
             <div className="section-kicker">
@@ -78,7 +78,7 @@ export default async function ArticlePage({ params }: Props) {
                 <strong>{previous.title}</strong>
               </a>
             ) : (
-              <a href={'/#' + article.category}>
+              <a href={'/library#' + article.category}>
                 <span>
                   <ArrowLeft size={14} /> 返回目录
                 </span>
@@ -113,7 +113,7 @@ export default async function ArticlePage({ params }: Props) {
                   </li>
                 ))}
               </ol>
-              <a href={'/#' + article.category} className="toc-back">
+              <a href={'/library#' + article.category} className="toc-back">
                 <ArrowLeft size={14} /> 浏览{article.categoryLabel}笔记
               </a>
             </nav>

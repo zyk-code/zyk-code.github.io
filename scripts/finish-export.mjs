@@ -50,14 +50,23 @@ for (const article of articles) {
 }
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
 const homepage = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
+assert(
+  !homepage.includes('class="index-panel"') &&
+    !homepage.includes('class="topic-grid"') &&
+    !homepage.includes('class="directory-category"'),
+  'Homepage must remain concise',
+);
+assert(homepage.includes('href="/library"'), 'Homepage needs a library entry');
+const library = fs.readFileSync(path.join(output, 'library.html'), 'utf8');
 for (const article of articles)
   assert(
-    homepage.includes(`href="/notes/${article.slug}"`),
-    `Missing homepage article link: ${article.slug}`,
+    library.includes(`href="/notes/${article.slug}"`),
+    `Missing library article link: ${article.slug}`,
   );
 // GitHub Pages serves documents; framework Link interception must not return.
 for (const file of [
   'app/page.tsx',
+  'app/library/page.tsx',
   'app/not-found.tsx',
   'app/notes/[...slug]/page.tsx',
   'components/note-directory.tsx',

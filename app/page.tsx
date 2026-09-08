@@ -1,36 +1,12 @@
-import NoteDirectory from '@/components/note-directory';
-import topicDefinitions from '@/data/topics.json';
-import type { LucideIcon } from 'lucide-react';
-
 import SiteHeader from '@/components/site-header';
-import articles from '@/data/articles.json';
-import {
-  ArrowUpRight,
-  ArrowRight,
-  Code2,
-  Cpu,
-  BrainCircuit,
-  Terminal,
-  CornerDownRight,
-} from 'lucide-react';
-const topicIcons: Record<string, LucideIcon> = {
-  cpp: Code2,
-  computer: Cpu,
-  ai: BrainCircuit,
-  tools: Terminal,
-};
-const topics = topicDefinitions.map((topic) => ({
-  ...topic,
-  Icon: topicIcons[topic.id] ?? Code2,
-  count: articles.filter((a) => a.category === topic.id).length,
-}));
+import { ArrowUpRight, ArrowRight, Code2, Cpu, Terminal } from 'lucide-react';
 export default function Home() {
   return (
     <>
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
         <section className="hero">
-          <div className="container hero-grid">
+          <div className="container hero-grid hero-simple">
             <div className="hero-copy">
               <div className="eyebrow">
                 <span className="status-dot" /> ZYK’S DIGITAL NOTEBOOK{' '}
@@ -46,39 +22,9 @@ export default function Home() {
                 <br />
                 这里是我的技术笔记，也是一段持续积累的过程。
               </p>
-              <a className="primary-link" href="#knowledge">
+              <a className="primary-link" href="/library">
                 翻开我的笔记 <ArrowRight size={18} />
               </a>
-            </div>
-            <div className="index-panel">
-              <div className="index-top">
-                <span>
-                  <Terminal size={16} /> ~/knowledge
-                </span>
-                <span>INDEX</span>
-              </div>
-              <div className="index-content">
-                <p className="code-comment">
-                  {'// 把零散的知识，写成自己的理解'}
-                </p>
-                {topics.map((t, i) => (
-                  <a href={'#' + t.id} className="index-line" key={t.id}>
-                    <span className="line-number">0{i + 1}</span>
-                    <CornerDownRight size={15} />
-                    <strong>{t.title}</strong>
-                    <span className="index-count">
-                      {String(t.count).padStart(2, '0')} notes
-                    </span>
-                    <ArrowUpRight size={16} />
-                  </a>
-                ))}
-              </div>
-              <div className="index-bottom">
-                <span>
-                  <span className="status-dot" /> learning by doing
-                </span>
-                <span>{articles.length} 篇笔记</span>
-              </div>
             </div>
           </div>
           <div className="container hero-foot">
@@ -89,46 +35,10 @@ export default function Home() {
             </span>
           </div>
         </section>
-        <section id="knowledge" className="container knowledge-section">
-          <div className="section-heading">
-            <div>
-              <div className="section-kicker">01 / KNOWLEDGE BASE</div>
-              <h2>
-                知识有迹可循<span>.</span>
-              </h2>
-            </div>
-            <p>
-              四个方向，持续积累。
-              <br />
-              从感兴趣的主题开始阅读。
-            </p>
-          </div>
-          <div className="topic-grid">
-            {topics.map((t) => (
-              <a className="topic-card" href={'#' + t.id} key={t.id}>
-                <div className="topic-top">
-                  <t.Icon size={24} />
-                  <span>
-                    {String(t.count).padStart(2, '0')} 篇{' '}
-                    <ArrowUpRight size={17} />
-                  </span>
-                </div>
-                <div className="topic-en">{t.en}</div>
-                <h3>{t.title}</h3>
-                <p>{t.description}</p>
-                <div className="topic-tags">
-                  {t.tags}
-                  <ArrowRight size={17} />
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-        <NoteDirectory />
         <section id="projects" className="container project-section">
           <div className="section-heading">
             <div>
-              <div className="section-kicker">02 / BUILD & EXPLORE</div>
+              <div className="section-kicker">01 / BUILD & EXPLORE</div>
               <h2>
                 写下来，也做出来<span>.</span>
               </h2>

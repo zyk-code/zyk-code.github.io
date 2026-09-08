@@ -8,7 +8,7 @@ export default function SiteHeader() {
           <span className="brand-sub">笔记与实践</span>
         </a>
         <nav aria-label="主导航">
-          <a href="/#knowledge">知识库</a>
+          <a href="/library">知识库</a>
           <a href="/#projects">项目与资源</a>
           <a
             href="https://github.com/zyk-code"
