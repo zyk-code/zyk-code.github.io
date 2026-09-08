@@ -39,3 +39,5 @@ pnpm build
 基于 React、Vinext 和 Markdown-it；代码、数学公式与原有配图均保留。
 
 原站鸣谢：[Albert Zhang](https://github.com/AZCodingAccount)。
+
+页面间导航使用原生链接，直接打开 GitHub Pages 导出的 HTML，避免客户端路由对动态服务的依赖。

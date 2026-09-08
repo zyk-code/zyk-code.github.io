@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+
 import { notFound } from 'next/navigation';
 import {
   ArrowLeft,
@@ -36,9 +36,9 @@ export default async function ArticlePage({ params }: Props) {
       <main id="main-content" tabIndex={-1} className="container reader-grid">
         <article className="reader-article">
           <nav aria-label="面包屑" className="breadcrumb">
-            <Link href="/#knowledge">知识库</Link>
+            <a href="/#knowledge">知识库</a>
             <span>/</span>
-            <Link href={'/#' + article.category}>{article.categoryLabel}</Link>
+            <a href={'/#' + article.category}>{article.categoryLabel}</a>
           </nav>
           <header className="article-heading">
             <div className="section-kicker">
@@ -71,34 +71,34 @@ export default async function ArticlePage({ params }: Props) {
           />
           <nav className="article-pagination" aria-label="上一篇和下一篇">
             {previous ? (
-              <Link href={'/notes/' + previous.slug}>
+              <a href={'/notes/' + previous.slug}>
                 <span>
                   <ArrowLeft size={14} /> 上一篇
                 </span>
                 <strong>{previous.title}</strong>
-              </Link>
+              </a>
             ) : (
-              <Link href={'/#' + article.category}>
+              <a href={'/#' + article.category}>
                 <span>
                   <ArrowLeft size={14} /> 返回目录
                 </span>
                 <strong>{article.categoryLabel}</strong>
-              </Link>
+              </a>
             )}
             {next && (
-              <Link href={'/notes/' + next.slug}>
+              <a href={'/notes/' + next.slug}>
                 <span>
                   下一篇 <ArrowRight size={14} />
                 </span>
                 <strong>{next.title}</strong>
-              </Link>
+              </a>
             )}
           </nav>
           <div className="article-end">
             <span>ZYK · 笔记与实践</span>
-            <Link href="/">
+            <a href="/">
               返回首页 <ArrowUpRight size={14} />
-            </Link>
+            </a>
           </div>
         </article>
         {toc.length > 0 && (
@@ -113,9 +113,9 @@ export default async function ArticlePage({ params }: Props) {
                   </li>
                 ))}
               </ol>
-              <Link href={'/#' + article.category} className="toc-back">
+              <a href={'/#' + article.category} className="toc-back">
                 <ArrowLeft size={14} /> 浏览{article.categoryLabel}笔记
-              </Link>
+              </a>
             </nav>
           </aside>
         )}

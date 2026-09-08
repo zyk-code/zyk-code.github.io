@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
+
 import { Search, ArrowUpRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -72,7 +72,7 @@ export default function NoteDirectory() {
             {group.length ? (
               <div className="note-list">
                 {group.map((article) => (
-                  <Link
+                  <a
                     className="note-link"
                     href={'/notes/' + article.slug}
                     key={article.slug}
@@ -99,7 +99,7 @@ export default function NoteDirectory() {
                         ? '学习提纲'
                         : `约 ${article.minutes} 分钟`}
                     </span>
-                  </Link>
+                  </a>
                 ))}
               </div>
             ) : (

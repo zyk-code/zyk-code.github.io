@@ -1,7 +1,7 @@
 import NoteDirectory from '@/components/note-directory';
 import topicDefinitions from '@/data/topics.json';
 import type { LucideIcon } from 'lucide-react';
-import Link from 'next/link';
+
 import SiteHeader from '@/components/site-header';
 import articles from '@/data/articles.json';
 import {
@@ -207,9 +207,9 @@ export default function Home() {
         </section>
       </main>
       <footer className="site-footer container">
-        <Link className="brand" href="/">
+        <a className="brand" href="/">
           zyk<span className="brand-dot">.</span>
-        </Link>
+        </a>
         <p>把学到的留下，把想做的实现。</p>
         <div>
           <a

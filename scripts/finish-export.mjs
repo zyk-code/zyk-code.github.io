@@ -30,9 +30,13 @@ for (const article of articles) {
     /(?:src|href)="(\/(?!\/)[^"#?]+)(?:[?#][^"]*)?"/g,
   )) {
     const href = decodeURIComponent(match[1]);
-    if (href.startsWith('/notes/')) continue;
     const asset = path.join(output, href);
-    assert(fs.existsSync(asset), `Missing exported asset: ${href}`);
+    assert(
+      fs.existsSync(asset) ||
+        fs.existsSync(asset + '.html') ||
+        fs.existsSync(path.join(asset, 'index.html')),
+      `Missing exported link or asset: ${href}`,
+    );
   }
   const destination = `/notes/${article.slug}`;
   const redirect = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(article.title)} | zyk 笔记</title><meta http-equiv="refresh" content="0; url=${destination}"><link rel="canonical" href="https://zyk-code.github.io${destination}"></head><body><p>笔记已迁移至 <a href="${destination}">${escape(article.title)}</a>。</p></body></html>`;
@@ -45,6 +49,25 @@ for (const article of articles) {
   }
 }
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
+const homepage = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
+for (const article of articles)
+  assert(
+    homepage.includes(`href="/notes/${article.slug}"`),
+    `Missing homepage article link: ${article.slug}`,
+  );
+// GitHub Pages serves documents; framework Link interception must not return.
+for (const file of [
+  'app/page.tsx',
+  'app/not-found.tsx',
+  'app/notes/[...slug]/page.tsx',
+  'components/note-directory.tsx',
+  'components/site-header.tsx',
+]) {
+  assert(
+    !/from\s+['"]next\/link['"]/.test(fs.readFileSync(file, 'utf8')),
+    `Use document navigation for static hosting: ${file}`,
+  );
+}
 console.log(
   `Validated homepage, 404, ${articles.length} articles, local assets and ${articles.length * 2} legacy redirects.`,
 );
