@@ -1,5 +1,12 @@
 import SiteHeader from '@/components/site-header';
-import { ArrowUpRight, ArrowRight, Code2, Cpu, Terminal } from 'lucide-react';
+import {
+  ArrowUpRight,
+  ArrowRight,
+  Code2,
+  Cpu,
+  Terminal,
+  Network,
+} from 'lucide-react';
 export default function Home() {
   return (
     <>
@@ -48,7 +55,7 @@ export default function Home() {
           <div className="project-grid">
             <a
               className="project-card project-dark"
-              href="https://gitee.com/zou-yongqiu/esp8266"
+              href="https://github.com/zyk-code/archify-skills"
               target="_blank"
               rel="noreferrer"
             >
@@ -56,14 +63,15 @@ export default function Home() {
                 <span>PROJECT / 01</span>
                 <ArrowUpRight size={23} />
               </div>
-              <Cpu size={38} />
-              <h3>ESP8266 数据采集</h3>
+              <Network size={38} />
+              <h3>archify-skills</h3>
               <p>
-                在 Web 端查看 ADXL345 或 MPU6050
-                传感器的数据，把硬件采集连接到物联网应用。
+                基于 Archify
+                的个人维护版本，将架构图、流程图、时序图等整合为可搜索、筛选与切换的独立
+                HTML 图谱。
               </p>
               <span className="project-tag">
-                IoT <i /> ESP8266 <i /> Web
+                架构可视化 <i /> 多图管理 <i /> HTML
               </span>
             </a>
             <div className="resource-list">
