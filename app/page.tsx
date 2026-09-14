@@ -1,4 +1,6 @@
 import SiteHeader from '@/components/site-header';
+import projects from '@/data/projects.json';
+import type { LucideIcon } from 'lucide-react';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -7,6 +9,7 @@ import {
   Terminal,
   Network,
 } from 'lucide-react';
+const projectIcons: Record<string, LucideIcon> = { cpu: Cpu, network: Network };
 export default function Home() {
   return (
     <>
@@ -53,28 +56,30 @@ export default function Home() {
             <p>一些动手实践，和值得反复打开的资源。</p>
           </div>
           <div className="project-grid">
-            <a
-              className="project-card project-dark"
-              href="https://github.com/zyk-code/archify-skills"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="project-top">
-                <span>PROJECT / 01</span>
-                <ArrowUpRight size={23} />
-              </div>
-              <Network size={38} />
-              <h3>archify-skills</h3>
-              <p>
-                基于 Archify
-                的个人维护版本，将架构图、流程图、时序图等整合为可搜索、筛选与切换的独立
-                HTML 图谱。
-              </p>
-              <span className="project-tag">
-                架构可视化 <i /> 多图管理 <i /> HTML
-              </span>
-            </a>
-            <div className="resource-list">
+            {projects.map((project, index) => {
+              const Icon = projectIcons[project.icon] ?? Code2;
+              return (
+                <a
+                  className="project-card project-dark"
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  key={project.href}
+                >
+                  <div className="project-top">
+                    <span>PROJECT / {String(index + 1).padStart(2, '0')}</span>
+                    <ArrowUpRight size={23} />
+                  </div>
+                  <Icon size={38} />
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <span className="project-tag">
+                    {project.tags.join(' · ')}
+                  </span>
+                </a>
+              );
+            })}
+            <div className="resource-list project-resources">
               <a
                 href="https://github.com/zyk-code/zyk-code.github.io"
                 target="_blank"

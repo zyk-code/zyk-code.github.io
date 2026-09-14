@@ -24,6 +24,10 @@ pnpm dev
 
 首页、文章页和样式分别位于 `app/page.tsx`、`app/notes/[...slug]/page.tsx`、`app/globals.css`。`data/articles.json` 和 `data/search-index.json` 从 Markdown 自动生成，请勿直接编辑。
 
+## 添加项目
+
+首页项目列表在 `data/projects.json` 中维护。添加一条记录，填写标题、链接、简介、标签和图标即可；卡片会自动编号、排列和换行，无需修改页面布局。已有项目会继续保留。
+
 ## 代码检查
 
 运行 `pnpm check` 检查代码、类型，以及新增文章、公式、目录锚点、图片和无效输入的回归用例。提交时 GitHub Actions 也会执行这些检查。

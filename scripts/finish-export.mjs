@@ -50,6 +50,14 @@ for (const article of articles) {
 }
 fs.writeFileSync(path.join(output, '.nojekyll'), '');
 const homepage = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
+const projects = JSON.parse(fs.readFileSync('data/projects.json', 'utf8'));
+for (const project of projects) {
+  assert(
+    homepage.includes(`href="${escape(project.href)}"`) &&
+      homepage.includes(escape(project.title)),
+    `Missing homepage project: ${project.title}`,
+  );
+}
 assert(
   !homepage.includes('class="index-panel"') &&
     !homepage.includes('class="topic-grid"') &&

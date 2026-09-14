@@ -1,0 +1,16 @@
+[
+  {
+    "title": "ESP8266 数据采集",
+    "href": "https://gitee.com/zou-yongqiu/esp8266",
+    "description": "在 Web 端查看 ADXL345 或 MPU6050 传感器的数据，把硬件采集连接到物联网应用。",
+    "tags": ["IoT", "ESP8266", "Web"],
+    "icon": "cpu"
+  },
+  {
+    "title": "archify-skills",
+    "href": "https://github.com/zyk-code/archify-skills",
+    "description": "基于 Archify 的个人维护版本，将架构图、流程图、时序图等整合为可搜索、筛选与切换的独立 HTML 图谱。",
+    "tags": ["架构可视化", "多图管理", "HTML"],
+    "icon": "network"
+  }
+]

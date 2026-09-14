@@ -425,7 +425,7 @@ h2 > span {
 }
 .project-grid {
   display: grid;
-  grid-template-columns: 1fr 1.13fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 30px;
 }
 .project-card {
@@ -529,6 +529,12 @@ h2 > span {
 }
 .resource-list > a:hover h3 {
   color: #557d29;
+}
+.project-resources {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
 }
 .site-footer {
   border-top: 1px solid var(--border);
